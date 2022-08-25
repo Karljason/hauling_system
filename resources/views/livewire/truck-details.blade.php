@@ -31,7 +31,7 @@
                 <div class="row">
                 <div class="col-md-12">
                     <button class="btn btn-sm btn-secondary"
-                    wire:click.prevent="addEmployee">+ Add Another Truck</button>
+                    wire:click.prevent="addTruck">+ Add Another Truck</button>
                 </div>
             </div>
             </tbody>
