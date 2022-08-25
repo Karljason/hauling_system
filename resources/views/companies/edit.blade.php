@@ -33,8 +33,6 @@
             {!! Form::close() !!}
             @livewire('truck-details')
             @livewire('employee-details')
-
-            
         </div>
     </div>
 @endsection 
