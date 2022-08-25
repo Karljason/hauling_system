@@ -54,3 +54,6 @@ Route::resource('companies', 'CompanyController');
 
 
 Route::resource('truckTypes', 'TruckTypeController');
+
+
+Route::resource('requisitions', 'requisitionsController');
