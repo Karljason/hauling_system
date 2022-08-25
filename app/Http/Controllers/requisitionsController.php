@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
+use App\SysOfficialNos;
+
+
 class requisitionsController extends AppBaseController
 {
     /** @var  requisitionsRepository */
@@ -42,7 +45,18 @@ class requisitionsController extends AppBaseController
      */
     public function create()
     {
-        return view('requisitions.create');
+        // add the current sys_official_nos.requisition_ctrl_no as default vaLue
+        // it should be hidden and should also be shown as span in create.blade
+        /*
+        setting default sys_official_nos.requisition_ctrl_no
+        php artisan tinker
+        */
+        $txtReqCtrlNo = SysOfficialNos::select('requisition_ctrl_no')->limit(1)->get(); 
+        $txtReqCtrlNo = $txtReqCtrlNo[0]; 
+        $txtReqCtrlNo = $txtReqCtrlNo->requisition_ctrl_no;
+
+        
+        return view('requisitions.create')->with('txtReqCtrlNo',  $txtReqCtrlNo);
     }
 
     /**
@@ -94,13 +108,15 @@ class requisitionsController extends AppBaseController
     {
         $requisitions = $this->requisitionsRepository->find($id);
 
+        $txtReqCtrlNo = $requisitions->ctrl_no;
+
         if (empty($requisitions)) {
             Flash::error('Requisitions not found');
 
             return redirect(route('requisitions.index'));
         }
 
-        return view('requisitions.edit')->with('requisitions', $requisitions);
+        return view('requisitions.edit')->with('requisitions', $requisitions)->with('txtReqCtrlNo', $txtReqCtrlNo);
     }
 
     /**
