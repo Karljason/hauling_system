@@ -26,3 +26,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('requisitions.index') }}"
+       class="nav-link {{ Request::is('requisitions*') ? 'active' : '' }}">
+        <p>Requisitions</p>
+    </a>
+</li>
+
+
