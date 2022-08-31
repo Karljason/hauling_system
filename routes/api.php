@@ -53,3 +53,6 @@ Route::resource('companies', 'CompanyAPIController');
 
 
 Route::resource('truck_types', 'TruckTypeAPIController');
+
+
+Route::resource('reports', 'reportsAPIController');
